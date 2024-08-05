@@ -1,10 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:kps/utils/app_assets.dart';
 import 'package:kps/utils/app_constants.dart';
+import 'package:kps/utils/app_local_database.dart';
 import 'package:kps/utils/app_navigation.dart';
 import 'package:kps/utils/app_route_name.dart';
 import 'package:kps/utils/app_text_style.dart';
@@ -19,9 +19,18 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 3), () {
-      AppNavigation.navigateTo(AppRouteName.MAIN_SCREEN_ROUTE);
+    Future.delayed(const Duration(seconds: 3), () async {
+      SharedPreference localDatabase = SharedPreference();
+      await localDatabase.sharedPreference;
+      bool? tutorial = localDatabase.getTutorial();
+      if (tutorial == true) {
+        AppNavigation.navigateToRemovingAll(AppRouteName.MAIN_SCREEN_ROUTE);
+      } else {
+        await localDatabase.setTutorial();
+        AppNavigation.navigateToRemovingAll(AppRouteName.LOGIN_SCREEN_ROUTE);
+      }
     });
+
     // TODO: implement initState
     super.initState();
   }

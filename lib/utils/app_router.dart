@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kps/utils/app_route_name.dart';
+import 'package:kps/views/cart_screen.dart';
 import 'package:kps/views/login_screen.dart';
-import 'package:kps/views/main_screen.dart';
+import 'package:kps/views/main_screen/main_screen.dart';
+import 'package:kps/views/product_screen.dart';
 import 'package:kps/views/splash_screen.dart';
 
 String route = "";
@@ -21,11 +23,26 @@ class AppRouter {
 
             // Login Screen
             case AppRouteName.LOGIN_SCREEN_ROUTE:
-              return const LoginScreen();
+              LoginScreenArguments? arg =
+                  routeSettings.arguments as LoginScreenArguments?;
+              return LoginScreen(fromMenu: arg?.fromMenu);
 
             // Main Screen
             case AppRouteName.MAIN_SCREEN_ROUTE:
-              return const MainScreen();
+              MainScreenArguments? arg =
+                  routeSettings.arguments as MainScreenArguments?;
+              return MainScreen(user: arg?.user);
+
+            //-------------- Product Routes ---------------------- //
+
+            // Product Screen
+            case AppRouteName.PRODUCT_SCREEN_ROUTE:
+              ProductScreenArguments arg =
+                  routeSettings.arguments as ProductScreenArguments;
+              return ProductScreen(index: arg.index);
+
+            case AppRouteName.CART_SCREEN:
+              return const CartScreen();
 
             default:
               return const Placeholder();

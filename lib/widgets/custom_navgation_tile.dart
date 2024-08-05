@@ -33,7 +33,7 @@ class _NavigaitonTileState extends State<NavigaitonTile> {
       onTap: widget.onpress,
       child: Container(
         padding: widget.padding ??
-            EdgeInsets.symmetric(vertical: 25.h, horizontal: 24.w),
+            EdgeInsets.symmetric(vertical: 15.h, horizontal: 24.w),
         decoration: BoxDecoration(
           border: widget.last
               ? null
@@ -47,10 +47,10 @@ class _NavigaitonTileState extends State<NavigaitonTile> {
             widget.icon ?? const SizedBox.shrink(),
             Text((widget.icon != null ? "  " : "") + widget.text,
                 style: TextStyle(
-                    fontSize: 18.sp,
+                    fontSize: 14.sp,
                     letterSpacing: 0.5,
                     color: AppColors.PRIMARY_COLOR_1,
-                    fontWeight: FontWeight.w600)),
+                    fontWeight: FontWeight.w500)),
             widget.suffix ?? const SizedBox.shrink(),
           ],
         ),

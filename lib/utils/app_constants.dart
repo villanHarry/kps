@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kps/services/models/cartModel.dart';
 
 class AppConstants {
+  static ValueNotifier<List<CartModel>> cart = ValueNotifier([]);
+  static void unfocus() => FocusManager.instance.primaryFocus?.unfocus();
+
   static const darkThemeStatusBar = SystemUiOverlayStyle(
       systemNavigationBarColor: Colors.black,
       systemNavigationBarIconBrightness: Brightness.light,

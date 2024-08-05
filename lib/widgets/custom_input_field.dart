@@ -170,7 +170,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                                   onShow
                                       ? Icons.hide_source_rounded
                                       : Icons.panorama_fish_eye,
-                                  color: const Color(0XFF2E2E2E),
+                                  color: AppColors.PRIMARY_COLOR,
                                   size: 19.sp),
                             ),
                             15.horizontalSpace,
@@ -188,21 +188,21 @@ class _CustomInputFieldState extends State<CustomInputField> {
             enabledBorder: OutlineInputBorder(
                 borderSide: widget.borderSide ?? BorderSide.none,
                 borderRadius:
-                    widget.borderRadius ?? BorderRadius.circular(100.sp)),
+                    widget.borderRadius ?? BorderRadius.circular(10.sp)),
             focusedBorder: OutlineInputBorder(
                 borderSide: widget.borderSide ?? BorderSide.none,
                 borderRadius:
-                    widget.borderRadius ?? BorderRadius.circular(100.sp)),
+                    widget.borderRadius ?? BorderRadius.circular(10.sp)),
             disabledBorder: widget.borderSide == null
                 ? null
                 : OutlineInputBorder(
                     borderSide: widget.borderSide ?? BorderSide.none,
                     borderRadius:
-                        widget.borderRadius ?? BorderRadius.circular(100.sp)),
+                        widget.borderRadius ?? BorderRadius.circular(10.sp)),
             border: OutlineInputBorder(
                 borderSide: widget.borderSide ?? BorderSide.none,
                 borderRadius:
-                    widget.borderRadius ?? BorderRadius.circular(100.sp))),
+                    widget.borderRadius ?? BorderRadius.circular(10.sp))),
         validator: widget.validator ??
             (val) => val?.validateEmpty(widget.label ?? widget.hint),
       ),

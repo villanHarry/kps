@@ -8,4 +8,7 @@ class AppColors {
   static const SCAFFOLD_COLOR = Colors.white;
   static const WHITE_COLOR = Colors.white;
   static const ERROR_COLOR = Colors.red;
+  static const BUTTON_COLOR = Colors.green;
+  static const DRAWER_BACKGROUND = Color(0XFF003D2E);
+  static const DISABLED_BUTTON_COLOR = Color(0xFF014803);
 }

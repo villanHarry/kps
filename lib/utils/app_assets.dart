@@ -4,6 +4,8 @@ class AppAssets {
 
   //icons
   static const flash_icon = "$_iconPath/flash_icon.png";
+  static const google_icon = "$_iconPath/google_icon.png";
+  static const apple_icon = "$_iconPath/apple_icon.png";
 
   //images
   static const solar_panel_image = "$_imagePath/solar_panel_image.jpg";

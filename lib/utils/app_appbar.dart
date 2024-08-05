@@ -74,7 +74,8 @@ class AppAppBars {
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: Color.fromRGBO(255, 255, 255, 1)),
-                  child: const Icon(Icons.menu, color: AppColors.BLACK_COLOR),
+                  child: Icon(Icons.menu,
+                      color: AppColors.BLACK_COLOR, size: 28.sp),
                 ),
               ),
             )
@@ -120,8 +121,8 @@ class AppAppBars {
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.SCAFFOLD_COLOR),
-                    child: const Icon(Icons.notifications,
-                        color: AppColors.PRIMARY_COLOR),
+                    child: Icon(Icons.notifications,
+                        color: AppColors.PRIMARY_COLOR, size: 28.sp),
                   ),
                 ),
               )
@@ -130,17 +131,64 @@ class AppAppBars {
     );
   }
 
-  static Widget backButton({void Function()? backFunction, Color? color}) {
+  static Widget backButton(
+      {void Function()? backFunction, Color? color, Color? bgColor}) {
     return GestureDetector(
       onTap: backFunction,
       child: Container(
           width: 42.w,
           height: 42.h,
           padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 13.w),
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle, color: AppColors.TRANSPARENT_COLOR),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: bgColor ?? AppColors.TRANSPARENT_COLOR),
           child: Icon(Icons.arrow_back_outlined,
               color: color ?? AppColors.BLACK_COLOR)),
+    );
+  }
+
+  static Widget titleWidget(
+      {String? title,
+      String? description,
+      bool? back,
+      void Function()? backFunction}) {
+    return Column(
+      children: [
+        SizedBox(height: .097.sh),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (back ?? false)
+              GestureDetector(
+                onTap: backFunction,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(.02.sw, .02.sw, .02.sw, 0.03),
+                  child: Icon(Icons.arrow_back,
+                      color: AppColors.BLACK_COLOR, size: .068.sw),
+                ),
+              )
+            else
+              GestureDetector(
+                onTap: backFunction,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(.02.sw, .02.sw, .02.sw, 0.03),
+                  child: Icon(Icons.close,
+                      color: AppColors.BLACK_COLOR, size: .068.sw),
+                ),
+              ),
+            const Spacer(),
+            Text(title ?? "",
+                style: AppTextStyle.customtextStyle(
+                    fontSize: 30.sp, fontWeight: FontWeight.w500)),
+            const Spacer(),
+            SizedBox(width: .088.sw),
+          ],
+        ),
+        10.verticalSpace,
+        Text(description ?? "",
+            style: AppTextStyle.customtextStyle(
+                fontSize: 15.sp, color: Colors.grey.shade500)),
+      ],
     );
   }
 }
